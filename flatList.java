@@ -45,7 +45,7 @@ class LinkedList {
     }
 
     Node createList() {
-        int arr1[] = new int[] { 70, 5, 12, 7, 11 };
+        int arr1[] = new int[] { 701, 501, 1201, 7, 11 };
         int arr2[] = new int[] { 4, 20, 13 };
         int arr3[] = new int[] { 17, 6 };
         int arr4[] = new int[] { 9, 8 };

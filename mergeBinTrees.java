@@ -28,7 +28,7 @@ public class mergeBinTrees {
         root1.left.right = new Node(16);
         root1.left.right.right = new Node(24);
 
-        Node root2 = new Node(0);
+        Node root2 = new Node(4);
         root2.left = new Node(3);
         root2.left.right = new Node(5);
         root2.right = new Node(6);
