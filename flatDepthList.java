@@ -3,6 +3,7 @@ import java.io.*;
 
 /* Depth wise flattening of linked list - DSA-Medium-gfg */
 /* flattenList -> method created for flattening the list. The structure and extraneous utility methods are from gfg  */
+/* https://www.geeksforgeeks.org/flatten-a-multi-level-linked-list-set-2-depth-wise/ */
 
 public class flatDepthList {
 
@@ -32,6 +33,31 @@ public class flatDepthList {
         }
     }
 
+    public static Node flattener(Node head) {
+        System.out.println("IN HERE");
+        Node node = head;
+        if (node == null) {
+            return node;
+        }
+        while(node.next != null) {
+            if(node.down != null) {
+                Node ptr = flattener(node.down);
+                Node start = ptr;
+                while(ptr.next != null) {
+                    ptr = ptr.next;
+                }
+                Node temp = node.next;
+                node.next = node.down;
+                //node.down.prev = node;
+                ptr.next = temp;
+                //temp.prev = ptr;
+                node.down = null;
+            }
+            node = node.next;
+        }
+        return head;
+    }
+
     // Utility method to print a linked list
     public static void printFlattenNodes(Node head) {
         Node curr = head;
@@ -55,8 +81,8 @@ public class flatDepthList {
         head.next = new Node(2);
         head.next.next = new Node(3);
         head.next.next.next = new Node(4);
-        head.next.down = new Node(71);
-        head.next.down.down = new Node(92);
+        head.next.down = new Node(7);
+        head.next.down.down = new Node(9);
         head.next.down.down.down = new Node(14);
         head.next.down.down.down.down = new Node(15);
         head.next.down.down.down.down.next = new Node(23);
@@ -70,9 +96,10 @@ public class flatDepthList {
         head.next.down.next.down.down.next.next.next.down = new Node(21);
         head.next.down.next.next = new Node(10);
         head.next.down.next.next.down = new Node(11);
-        head.next.down.next.next.next = new Node(12);
+        head.next.down.next.next.next = new Node(1200);
 
-        flattenList(head);
+        //flattenList(head);
+        head = flattener(head);
         printFlattenNodes(head);
     }
 }
