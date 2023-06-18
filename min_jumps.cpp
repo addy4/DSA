@@ -64,6 +64,8 @@ int main(int argc, char const *argv[])
     vector<int> v;
     vector<vector<int>> vstore;
 
+    cout << "Start MinJumps" << endl;
+
     cout << min_jumps_store(0, arr, sizeof(arr) / sizeof(arr[0]), &v, &vstore) << endl;
     //cout << min_jumps(0, arr, sizeof(arr) / sizeof(arr[0]), &v) << endl;
 

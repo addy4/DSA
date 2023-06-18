@@ -44,11 +44,9 @@ public class mergeBinTrees {
 
     public static Node sum(Node r1, Node r2) {
         if (r1 != null && r2 != null) {
-            Node leftNode = sum(r1.left, r2.left);
-            Node rightNode = sum(r1.right, r2.right);
             Node head = new Node(r1.val, r2.val);
-            head.left = leftNode;
-            head.right = rightNode;
+            head.left = sum(r1.left, r2.left);
+            head.right = sum(r1.right, r2.right);
             return head;
         } else if (r1 == null && r2 != null) {
             return r2;
