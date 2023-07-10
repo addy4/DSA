@@ -41,8 +41,9 @@ public class leafToRoot {
         List<List<Integer>> pathList = new ArrayList<List<Integer>>();
 
         int sum = 392;
-        checkLeafToRootSum(root, sum, 0, pathList); /* Root to leaf path sum - gives
-        // path of nodes from root to leaf */
+        checkLeafToRootSum(root, sum, 0, pathList); /*
+                                                     * Root to leaf path sum - gives // path of nodes from root to leaf
+                                                     */
         /*
          * LeafToRootSum(root, sum, 0); Root to leaf path sum - gives T/F whether path
          * exists or not
@@ -90,13 +91,13 @@ public class leafToRoot {
 
     public static void LeafToRootSum(Node head, int sum, int sum_yet) {
         if (head != null) {
-            head.sumNode = head.val + sum_yet;
-            if (head.sumNode == sum && head.left == null && head.right == null) {
+            sum_yet = head.val + sum_yet;
+            if (sum_yet == sum && head.left == null && head.right == null) {
                 globalCheck = true;
             }
             Node children[] = { head.left, head.right };
             for (Node child : children) {
-                LeafToRootSum(child, sum, head.sumNode);
+                LeafToRootSum(child, sum, sum_yet);
             }
             return;
         }
