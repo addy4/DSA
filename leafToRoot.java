@@ -65,9 +65,9 @@ public class leafToRoot {
 
     public static void checkLeafToRootSum(Node head, int sum, int sum_yet, List<List<Integer>> pathList) {
         if (head != null) {
-            head.sumNode = head.val + sum_yet;
+            sum_yet = head.val + sum_yet;
             localList.add(head.val);
-            if (head.sumNode == sum && head.left == null && head.right == null) {
+            if (sum_yet == sum && head.left == null && head.right == null) {
                 numPaths++;
                 globalCheck = true;
                 // this ensures that the list is NOT getting modified
@@ -78,10 +78,8 @@ public class leafToRoot {
                 }
                 System.out.println();
             }
-            Node children[] = { head.left, head.right };
-            for (Node child : children) {
-                checkLeafToRootSum(child, sum, head.sumNode, pathList);
-            }
+            checkLeafToRootSum(head.left, sum, sum_yet, pathList);
+            checkLeafToRootSum(head.right, sum, sum_yet, pathList);
             int lastItem = localList.size() - 1;
             localList.remove(lastItem);
             return;
