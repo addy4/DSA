@@ -42,9 +42,11 @@ class smallest_sum_subarray {
 
         if (check_sum(numbers, k, mid)) {
             maxsum = maxsum - 1;
+            maxsum = mid;
             return binary_search(numbers, k, maxsum, minsum);
         } else {
             minsum = minsum + 1;
+            minsum = mid + 1;
             // minsum = minsum + 1 -> longer time
             return binary_search(numbers, k, maxsum, minsum);
         }
@@ -62,8 +64,8 @@ class smallest_sum_subarray {
     public static void main(String[] args) {
         System.out.println("~ split array largest sum ~");
         smallest_sum_subarray solver = new smallest_sum_subarray();
-        int[] numbers = { 0, 0, 0, 0, 2, 0, 1, 0 };
-        int k = 3;
+        int[] numbers = { 1, 2, 3, 4 };
+        int k = 1;
         solver.get_subarrays(numbers, k);
         // System.out.println(solver.check_sum(numbers, k, 9));
     }

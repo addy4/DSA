@@ -1,0 +1,2 @@
+g++ -std=c++17 -c page.cpp disk.cpp cache.cpp 
+g++ -std=c++17 kernel.cpp page.o disk.o cache.o -o ker

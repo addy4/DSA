@@ -17,7 +17,7 @@ using namespace std;
 int main(int argc, char const *argv[])
 {
     int arr[] = {900, 940, 950, 1100, 1500, 1800};
-    int dep[] = {910, 1200, 1120, 1130, 1900, 2000};
+    int dep[] = {910, 1200, 1020, 1130, 1900, 2000};
 
     cout << platforms(arr, dep, sizeof(arr) / sizeof(arr[0])) << endl;
 
@@ -26,6 +26,10 @@ int main(int argc, char const *argv[])
 
 int platforms(int *arr, int *dep, int trains)
 {
+
+    sort(arr, arr + trains); // if sorting is not applied, we get ans 3 which is wrong
+    sort(dep, dep + trains); // reason: 950 waali train if leaves 10:20, we get max plats as 2!
+
     vector<int> merge_sorted;
     int p = 0, i = 0, j = 0, palts = 0, mplats = INT16_MIN;
 

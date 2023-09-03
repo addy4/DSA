@@ -9,6 +9,13 @@
 
 using namespace std;
 
+class Check
+{
+public:
+    int a;
+    int b;
+}
+
 class Mapper
 {
     // Variables
@@ -38,6 +45,7 @@ public:
 
     void iterateMap()
     {
+
         for (auto it : tweets)
         {
             cout << it.first << ": { " << it.second.first << ", " << it.second.second << " }" << endl;
@@ -70,6 +78,7 @@ public:
 
     void iterateUMap()
     {
+
         for (auto it : umap)
         {
             cout << it.first << " : ";
@@ -109,6 +118,9 @@ int main(int argc, char const *argv[])
     vec2d[0].push_back(1);
 
     cout << vec2d[0][0] << endl;
+
+    Check *c = new Check();
+    cout << c->b << c->a << endl;
 
     return 0;
 }
