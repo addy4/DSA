@@ -37,22 +37,36 @@ int min_jumps_store(int index, int arr[], int arrlen, vector<int> *v, vector<vec
     int min_index;
     int steps;
 
+    cout << "now at " << index << endl;
+
     (*v).push_back(index);
 
-    if (index == arrlen - 1)
+    if (index >= arrlen - 1)
     {
+        for (auto it = 0; it < (*v).size(); it++)
+        {
+            cout << "-> " << (*v)[it];
+        }
+        cout << endl;
+        cout << "reached at " << index << endl;
         (*vstore).push_back(*v);
+        cout << "popping back " << (*v)[(*v).size() - 1] << endl;
+        (*v).pop_back();
+        return 0;
     }
 
     for (int j = 1; j <= arr[index]; j++)
     {
+        cout << "AT: " << index << " with j: " << j << endl;
         if (index + j == arrlen)
         {
             break;
         }
+        cout << "... progressing to " << index + j << " and index = " << index << endl;
         steps = 1 + min_jumps_store(index + j, arr, arrlen, v, vstore);
     }
 
+    cout << "popping back " << (*v)[(*v).size() - 1] << endl;
     (*v).pop_back();
 
     return min;
@@ -60,7 +74,8 @@ int min_jumps_store(int index, int arr[], int arrlen, vector<int> *v, vector<vec
 
 int main(int argc, char const *argv[])
 {
-    int arr[] = {1, 15, 5, 6, 9, 2, 6, 7, 6, 8, 9, 1, 3, 5, 6, 9, 2, 6, 7, 6, 8, 9};
+    //int arr[] = {1, 15, 5, 6, 9, 2, 6, 7, 6, 8, 9, 1, 3, 5, 6, 9, 2, 6, 7, 6, 8, 9};
+    int arr[] = {3, 1, 2, 4};
     vector<int> v;
     vector<vector<int>> vstore;
 
@@ -68,6 +83,8 @@ int main(int argc, char const *argv[])
 
     cout << min_jumps_store(0, arr, sizeof(arr) / sizeof(arr[0]), &v, &vstore) << endl;
     //cout << min_jumps(0, arr, sizeof(arr) / sizeof(arr[0]), &v) << endl;
+
+    //return -1;
 
     int len = INT32_MAX;
     auto k = vstore.begin();
